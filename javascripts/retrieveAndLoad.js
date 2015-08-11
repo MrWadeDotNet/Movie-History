@@ -6,6 +6,8 @@ define(function(){
         url:"http://www.omdbapi.com/?t=" + userInput,
         method: "GET"
       }).done(function(data){
+        data.userRating = 0;
+        data.watched = false;
         console.log(data);
         $.ajax({
           url: "https://movie-application.firebaseio.com/movies.json",
@@ -13,7 +15,7 @@ define(function(){
           data: JSON.stringify(data)
         }).done(function(){
           console.log("loaded to firebase");
-          });
+        });
       });
     };
 });
