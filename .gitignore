@@ -1,2 +1,5 @@
 bower_components
+.sass-cache/
+sass
+.gitignore
 node_modules
