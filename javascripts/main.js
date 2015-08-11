@@ -19,5 +19,15 @@ requirejs.config({
 requirejs(
   ["jquery","lodash","firebase", "hbs", "bootstrap"],
   function($, _, _firebase, Handlebars, bootstrap) {
-  
+    $('#submitmovie').on("click", function(){
+      var userInput = $('#inputTitle').val();
+      console.log(userInput);
+      $.ajax({
+        url:"http://www.omdbapi.com/?t=" + userInput,
+        method: "GET"
+      }).done(function(data){
+        console.log(data)
+      })
+    });
+    
   });
