@@ -16,3 +16,8 @@ requirejs.config({
   }
 });
 
+requirejs(
+  ["jquery","lodash","firebase", "hbs", "bootstrap"],
+  function($, _, _firebase, Handlebars, bootstrap) {
+  
+  });
