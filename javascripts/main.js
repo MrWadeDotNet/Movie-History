@@ -17,22 +17,23 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad"],
-  function($, _, _firebase, Handlebars, bootstrap, RAL) {
+  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display"],
+  function($, _, _firebase, Handlebars, bootstrap, RAL, display) {
     var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/");
     myFirebaseRef.child("movies").on("value", function(snapshot) {
       console.log(snapshot.val());
-      // var movies = snapshot.val();
-      // console.log(movies);
-      // var allMoviesArray=[];
-      //  // Convert Firebase's object of objects into an array of objects
-      // for (var key in movies) {
-      //   allMoviesArray[allSongsArray.length] = movies[key];
-      // }
-      // console.log(allMoviesArray);
-      // allMoviesObject = {movies: allMoviesArray};
+      var movies = snapshot.val();
+      console.log(movies);
+      var allMoviesArray=[];
+       // Convert Firebase's object of objects into an array of objects
+      for (var key in movies) {
+        allMoviesArray[allMoviesArray.length] = movies[key];
+      }
+      console.log(allMoviesArray);
+      allMoviesObject = {movies: allMoviesArray};
+//////////////////////////////////////////////////
+      display(allMoviesArray);
     });
-
 
     $('#submitmovie').on("click", function(){
       RAL();
