@@ -63,6 +63,29 @@ requirejs(
       addRating(datakey, input);
        });
 
-      
+    $(document).on("click", '.moviedata', function() {
+      var datakey = ($(this).attr('data-key'));
+      console.log(datakey);
+       var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/movies/");
+       myFirebaseRef.once("value", function(snapshot) {
+        var movies = snapshot.val();
+         console.log(movies);
+        
+
+        $(".actors").html(movies[datakey].Actors);
+        $(".released").html(movies[datakey].Released);
+      console.log(movies[datakey].watched);
+     if(movies[datakey].watched === true) {
+          watchedText = "Yes";
+        }
+         else {
+           watchedText = "No";
+          }
+
+       $(".iswatched").html(watchedText);
+       });
+    });  
+
+  
   
   });

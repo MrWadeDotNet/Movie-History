@@ -7,7 +7,7 @@ define(function(){
         method: "GET"
       }).done(function(data){
         data.userRating = 0;
-        data.watched = "false";
+        data.watched = false;
         data.poster = "http://img.omdbapi.com/?i=" + data.imdbID + "&apikey=8513e0a1";
         console.log(data);
         $.ajax({
