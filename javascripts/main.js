@@ -17,12 +17,12 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed","remove"],
-  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed,deleteFromDb) {
+  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed","remove","popactors"],
+  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed,deleteFromDb,populateActors) {
     var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/");
     myFirebaseRef.child("movies").on("value", function(snapshot) {
       console.log(snapshot.val());
-      var movies = snapshot.val();
+      movies = snapshot.val();
       console.log(movies);
       var allMoviesArray=[];
        // Convert Firebase's object of objects into an array of objects
@@ -34,10 +34,6 @@ requirejs(
       display(movies);  
       //changeViewedValue(key);
     
-    // BUG TO WORK ON 
-    // IF USER DOES NOT REFRESH PAGE AFTER ADDING SONG AND IMMEDIATELY SELECTS "WATCHED" A NEW KEY IS CREATED WITH VALUE "WATCHED: TRUE" AND MOVIE KEY IS ALSO SET "WATCHED:TRUE"
-
-
     });
 
     $('#submitmovie').on("click", function(){
@@ -55,6 +51,28 @@ requirejs(
       deleteFromDb(datakey);
        });
 
-      
+    $(document).on("click", '.moviedata', function() {
+      var datakey = ($(this).attr('data-key'));
+      console.log(datakey);
+       var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/movies/");
+       myFirebaseRef.once("value", function(snapshot) {
+        var movies = snapshot.val();
+         console.log(movies);
+        
+
+        $(".actors").html(movies[datakey].Actors);
+        $(".released").html(movies[datakey].Released);
+      console.log(movies[datakey].watched);
+     if(movies[datakey].watched === true) {
+          watchedText = "Yes";
+        }
+         else {
+           watchedText = "No";
+          }
+
+       $(".iswatched").html(watchedText);
+       });
+    });  
+
   
   });
