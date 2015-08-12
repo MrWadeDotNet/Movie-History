@@ -31,22 +31,32 @@ requirejs(
       }
       allMoviesObject = {movies: allMoviesArray};
 
-      display(allMoviesArray);
+      display(movies);  
       //changeViewedValue(key);
     
     // BUG TO WORK ON 
     // IF USER DOES NOT REFRESH PAGE AFTER ADDING SONG AND IMMEDIATELY SELECTS "WATCHED" A NEW KEY IS CREATED WITH VALUE "WATCHED: TRUE" AND MOVIE KEY IS ALSO SET "WATCHED:TRUE"
 
-     $(document).on("click", '.isviewed', function() {
-       
-       addViewed(key);
-        });
 
     });
 
     $('#submitmovie').on("click", function(){
       RAL();
+      });
 
-    });
+   $(document).on("click", '.isviewed', function() {
+    var datakey = ($(this).parent().attr('data-key'));
+    console.log(datakey);
+      addViewed(datakey);
+       });
 
-});
+      /*
+      // console.log(datakey);
+      var firebaseUpdate = new Firebase("https://movie-application.firebaseio.com/movies/" + datakey);
+       firebaseUpdate.child("watched").set(true);
+        console.log("Updated");
+    //   addViewed(datakey);
+       });
+*/
+  
+  });
