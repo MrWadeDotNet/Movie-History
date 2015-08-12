@@ -17,8 +17,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed","remove"],
-  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed,deleteFromDb) {
+  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed","remove", "rating"],
+  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed,deleteFromDb, addRating) {
     var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/");
     myFirebaseRef.child("movies").on("value", function(snapshot) {
       console.log(snapshot.val());
@@ -53,6 +53,14 @@ requirejs(
    $(document).on("click", '.delete', function() {
     var datakey = ($(this).parent().attr('data-key'));
       deleteFromDb(datakey);
+       });
+
+   $(document).on("click", '.rating', function() {
+    console.log("this button works")
+    var datakey = ($(this).parent().attr('data-key'));
+    var input = $(this).prev().val();
+
+      addRating(datakey, input);
        });
 
       
