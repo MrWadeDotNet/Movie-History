@@ -31,11 +31,28 @@ requirejs(
       }
       console.log(allMoviesArray);
       allMoviesObject = {movies: allMoviesArray};
-//////////////////////////////////////////////////
+
       display(allMoviesArray);
+      changeViewedValue(key);
+
     });
 
     $('#submitmovie').on("click", function(){
       RAL();
     });
+
+function changeViewedValue(getKey) {
+
+    $(document).on("click", '.isviewed', function() {
+
+      var firebaseUpdate = new Firebase("https://movie-application.firebaseio.com/movies/" + getKey);
+
+      firebaseUpdate.child("watched").set(true);
+
+      console.log("Updated");
+
+
+         });
+
+  }
 });
