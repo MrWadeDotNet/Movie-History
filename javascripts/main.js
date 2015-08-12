@@ -17,8 +17,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display"],
-  function($, _, _firebase, Handlebars, bootstrap, RAL, display) {
+  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed"],
+  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed) {
     var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/");
     myFirebaseRef.child("movies").on("value", function(snapshot) {
       console.log(snapshot.val());
@@ -29,30 +29,24 @@ requirejs(
       for (var key in movies) {
         allMoviesArray[allMoviesArray.length] = movies[key];
       }
-      console.log(allMoviesArray);
       allMoviesObject = {movies: allMoviesArray};
 
       display(allMoviesArray);
-      changeViewedValue(key);
+      //changeViewedValue(key);
+    
+    // BUG TO WORK ON 
+    // IF USER DOES NOT REFRESH PAGE AFTER ADDING SONG AND IMMEDIATELY SELECTS "WATCHED" A NEW KEY IS CREATED WITH VALUE "WATCHED: TRUE" AND MOVIE KEY IS ALSO SET "WATCHED:TRUE"
+
+     $(document).on("click", '.isviewed', function() {
+       
+       addViewed(key);
+        });
 
     });
 
     $('#submitmovie').on("click", function(){
       RAL();
+
     });
 
-function changeViewedValue(getKey) {
-
-    $(document).on("click", '.isviewed', function() {
-
-      var firebaseUpdate = new Firebase("https://movie-application.firebaseio.com/movies/" + getKey);
-
-      firebaseUpdate.child("watched").set(true);
-
-      console.log("Updated");
-
-
-         });
-
-  }
 });

@@ -7,7 +7,7 @@ define(function(){
         method: "GET"
       }).done(function(data){
         data.userRating = 0;
-        data.watched = false;
+  //      data.watched = false;
         console.log(data);
         $.ajax({
           url: "https://movie-application.firebaseio.com/movies.json",
@@ -19,3 +19,5 @@ define(function(){
       });
     };
 });
+
+//Need to add check for failure. On Failure return "Movie Not Found"
