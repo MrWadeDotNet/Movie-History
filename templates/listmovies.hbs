@@ -1,13 +1,14 @@
 {{#each this}}
-  <div data-key="{{@key}}" class="container-padding sidebar-margin border {{Title}}">
+  <div data-key="{{@key}}" class="moviedata container-padding sidebar-margin border {{Title}}">
     <h4>{{Title}} </h4>
-    <ul>
+    <img src={{poster}}>
+    <h5>{{Plot}}</h5>
+   <!-- <ul>
       <li><h5>{{Plot}}</h5></li>
       <li><h5>{{Actors}}</h5></li>
       <li><h5>{{Released}}</h5></li>
-    </ul>
+    </ul> -->
           <input type="button" class="btn-success isviewed" value="Watched" />
           <input type="button" class="btn-failure delete" value="Remove" />
-    <img src={{poster}}>
   </div>
 {{/each}}
