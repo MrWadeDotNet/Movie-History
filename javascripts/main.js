@@ -56,7 +56,7 @@ requirejs(
        });
 
    $(document).on("click", '.rating', function() {
-    console.log("this button works")
+    console.log("this button works");
     var datakey = ($(this).parent().attr('data-key'));
     var input = $(this).prev().val();
 
