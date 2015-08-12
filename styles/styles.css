@@ -46,10 +46,16 @@ nav ul {
 .top-container {
   margin-top: 150px; }
 
-.genre {
-  margin-top: 25px; }
+.sidebar-margin {
+  margin-top: 15px; }
 
 .text-color {
   color: #000000; }
+
+.container-padding {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px; }
 
 /*# sourceMappingURL=styles.css.map */

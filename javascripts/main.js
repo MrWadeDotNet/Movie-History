@@ -17,8 +17,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed"],
-  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed) {
+  ["jquery","lodash","firebase", "hbs", "bootstrap", "retrieveAndLoad", "display","viewed","remove"],
+  function($, _, _firebase, Handlebars, bootstrap, RAL, display,addViewed,deleteFromDb) {
     var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/");
     myFirebaseRef.child("movies").on("value", function(snapshot) {
       console.log(snapshot.val());
@@ -46,17 +46,15 @@ requirejs(
 
    $(document).on("click", '.isviewed', function() {
     var datakey = ($(this).parent().attr('data-key'));
-    console.log(datakey);
+
       addViewed(datakey);
        });
 
-      /*
-      // console.log(datakey);
-      var firebaseUpdate = new Firebase("https://movie-application.firebaseio.com/movies/" + datakey);
-       firebaseUpdate.child("watched").set(true);
-        console.log("Updated");
-    //   addViewed(datakey);
+   $(document).on("click", '.delete', function() {
+    var datakey = ($(this).parent().attr('data-key'));
+      deleteFromDb(datakey);
        });
-*/
+
+      
   
   });
