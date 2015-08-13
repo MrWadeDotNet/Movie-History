@@ -32,11 +32,6 @@ requirejs(
       allMoviesObject = {movies: allMoviesArray};
 
       display(movies);  
-      //changeViewedValue(key);
-    
-    // BUG TO WORK ON 
-    // IF USER DOES NOT REFRESH PAGE AFTER ADDING SONG AND IMMEDIATELY SELECTS "WATCHED" A NEW KEY IS CREATED WITH VALUE "WATCHED: TRUE" AND MOVIE KEY IS ALSO SET "WATCHED:TRUE"
-
 
     });
 
@@ -52,6 +47,7 @@ requirejs(
 
    $(document).on("click", '.delete', function() {
     var datakey = ($(this).parent().attr('data-key'));
+    console.log(datakey);
       deleteFromDb(datakey);
        });
 
@@ -69,12 +65,11 @@ requirejs(
        var myFirebaseRef = new Firebase("https://movie-application.firebaseio.com/movies/");
        myFirebaseRef.once("value", function(snapshot) {
         var movies = snapshot.val();
-         console.log(movies);
-        
-
+      
         $(".actors").html(movies[datakey].Actors);
         $(".released").html(movies[datakey].Released);
-      console.log(movies[datakey].watched);
+     // console.log(movies[datakey].watched);
+     //Check for Watched Movie
      if(movies[datakey].watched === true) {
           watchedText = "Yes";
         }
@@ -86,6 +81,10 @@ requirejs(
        });
     });  
 
+  /*  $(document).on("click", ".moviedata", function() { 
+      console.log(this);
+    $(".bottom-container").toggleClass('show');
+    $(".bottom-container").toggleClass('hide');
+}); */
   
-  
-  });
+ });

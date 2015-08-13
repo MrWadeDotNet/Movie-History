@@ -1,14 +1,13 @@
 {{#each this}}
-  <div data-key="{{@key}}" class="moviedata container-padding sidebar-margin border {{Title}}">
-    <h4>{{Title}} </h4>
+  <div data-key="{{@key}}" class="col-md-2 moviedata container-padding sidebar-margin content-container {{Title}}">
+    <h3>{{Title}} </h3>
+    <h5>{{Year}}</h5>
+    <h5>{{Actors}}</h5>
+    <h5>User Rating: {{userRating}}</h5>
     <img src={{poster}}>
-    <h5>{{Plot}}</h5>
-   <!-- <ul>
-      <li><h5>{{Plot}}</h5></li>
-      <li><h5>{{Actors}}</h5></li>
-      <li><h5>{{Released}}</h5></li>
-    </ul> -->
-          <input type="button" class="btn-success isviewed" value="Watched" />
+    <h5 class="truncate">{{Plot}}</h5>
+
+         <input type="button" class="btn-success isviewed" value="Watched" />
           <input type="button" class="btn-failure delete" value="Remove" />
           {{!-- <input type="number" class="rating">                                                     --}}
           <select class="ratingNum" placeholder="rating">
@@ -24,7 +23,6 @@
       <option>10</option>
           </select>
           <button type="button" class="rating">Rate</button>
-
 
   </div>
 {{/each}}

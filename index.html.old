@@ -1,4 +1,4 @@
-
+<!doctype html>
 
 <html lang="en">
 
@@ -10,22 +10,44 @@
   </head>
   <body>
 
-<!-- Artist / Genre forms -->
 <!-- Navigation -->
 <nav class="topnav topelements navbar-fixed-top">
   <div class="row">
-    <div class='col-md-2 col-md-offset-10' data-toggle="modal" data-target="#myModal" id="#myBtn"><a href="#"><img src="http://4vector.com/i/free-vector-add-clip-art_117436_Add_clip_art_small.png" width="30" height="30"></a>
-    </div>
+    <div class="col-md-1">Home</div>
+    <div class='col-md-1' data-toggle="modal" data-target="#myModal" id="#myBtn"><a href="#">Add Movie</a></div>
   </div>
 </nav>
-<!--- Movie List Begin -->
-<div class="row">
-  <div class="col-md-12 container-padding">
-   <div class="col-md-12 movie_container">
+
+<!-- Artist / Genre forms -->
+  <div class="row top-container">
+    <div class="show col-md-2 col-md-offset-1">
+      <div class="col-md-10 col-md-offset-1 border">
+        <form class="form-inline" role="form">
+          <div class="actor-container form-group">
+            <h4>Actors</h4>
+            <div class="side-container-text actors">
+            </div>
+          </div>
+        </form>
+        </div>
+        <div class="col-md-10 col-md-offset-1 border sidebar-margin">
+              <h4>Release Date</h4>
+            <div class="side-container-text released">
+            </div>
+        </div>
+          <div class="col-md-10 col-md-offset-1 border sidebar-margin">
+              <h4>Have you seen this movie?</h4>
+              <div class="iswatched side-container-text">
+              </div>
+        </div>
+      </div>
+
+<!--- Music List Begin -->
+  <div class="col-md-4 col-md-offset-2">
+   <div class="movie_container">
     </div>
   </div>
 </div>
-
 <!--- Music List End -->
       <!-- Remove Button for real-time responsiveness  <button type="submit" class="btn btn-default">Filter</button> -->
 <!-- Modal -->
@@ -64,16 +86,16 @@
 </div>
 
 
+<!--- Footer
 
-<!-- Footer 
-<nav class="navbar-fixed-bottom footer" role="navigation">
+<nav class="navbar navbar-default navbar-bottom navbar-fixed-bottom footer" role="navigation">
   <div class="container">
-   <div>
-    <div class="col-md-1">
-       <h2>Released Date: </h2>
-      <div class='col-md-1' data-toggle="modal" data-target="#myModal" id="#myBtn"><a href="#">Add Movie</a></div>
-    </div>
+  <div>
+
+    <div class="col-md-6 col-md-offset-3">
+     <h1>Footer Contents</h1>
   </div>
+</div>
 </div>
 -->
 
