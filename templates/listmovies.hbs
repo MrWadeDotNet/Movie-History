@@ -10,7 +10,7 @@
     <input type="button" class="btn-success isviewed" value="Watched" />
     <input type="button" class="btn-failure delete" value="Remove" />
           {{!-- <input type="number" class="rating">                                                     --}}
-    <select class="ratingNum" placeholder="rating">
+    {{!-- <select class="ratingNum" placeholder="rating">
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -21,7 +21,8 @@
       <option>8</option>
       <option>9</option>
       <option>10</option>
-    </select>
+    </select> --}}
+    <input class="ratingNum" type="number" max="10" min="1" placeholder="Rating" style="width: 45px">
     <button type="button" class="rating">Rate</button>
 
   </div>
